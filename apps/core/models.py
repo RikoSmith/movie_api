@@ -14,9 +14,18 @@ class Movie(models.Model):
     directors = models.ManyToManyField(
         "core.Person", related_name="directed_movies", blank=True
     )
-
+    country_movies = models.ManyToManyField(
+        "core.Country", related_name="country_of_origin", blank=True
+    )
 
 class Person(models.Model):
     first_name = models.CharField(max_length=1000, null=False, blank=False)
     last_name = models.CharField(max_length=1000, null=False, blank=False)
     birth_date = models.DateField(null=False)
+    
+    
+class Country(models.Model):
+    title = models.CharField(max_length=1000, null=False, blank=False)
+    curency = models.CharField(max_length=1000, null=False, blank=False)
+    
+    
